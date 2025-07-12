@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import logo from '../assets/logo.png'
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -68,13 +69,16 @@ const Login = () => {
 
           <div className="col-span-4 p-8 md:p-10">
             <div className="flex items-center mb-8">
-              <div className="h-8 w-8 rounded-md bg-gradient-to-r from-orange-400 to-red-500"></div>
-              <span className="ml-2 text-xl font-semibold text-gray-800">Recova</span>
+              <img
+                  src={logo}
+                  alt="ReWear Logo"
+                  className="h-18 w-auto"
+                />
             </div>
 
             <h2 className="text-3xl font-bold text-gray-900 mb-2">Welcome Back</h2>
             <p className="text-gray-600 mb-6 text-sm">
-              Sign in to continue accessing Recova's powerful recovery tools.
+              Sign in to continue accessing ReWear's sustainable fashion platform.
             </p>
 
             <div className="space-y-3 mb-6">
@@ -143,7 +147,7 @@ const Login = () => {
             </form>
 
             <p className="text-sm text-gray-600 text-center mt-6">
-              Don’t have an account?{' '}
+              Don't have an account?{' '}
               <Link to="/signup" className="text-orange-600 hover:text-orange-500 font-medium">
                 Sign up
               </Link>
