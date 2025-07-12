@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | Recova</title>
+    <title>Login | ReWear</title>
     <link rel="stylesheet" href="../css/output.css">
 </head>
 <body>
@@ -70,12 +70,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="col-span-4 p-8 md:p-10">
                 <div class="flex items-center mb-8">
                     <div class="h-8 w-8 rounded-md bg-gradient-to-r from-orange-400 to-red-500"></div>
-                    <span class="ml-2 text-xl font-semibold text-gray-800">Recova</span>
+                    <span class="ml-2 text-xl font-semibold text-gray-800">ReWear</span>
                 </div>
 
-                <h2 class="text-3xl font-bold text-gray-900 mb-2">Welcome to Recova</h2>
+                <h2 class="text-3xl font-bold text-gray-900 mb-2">Welcome to ReWear</h2>
                 <p class="text-gray-600 mb-6 text-sm">
-                    Recova is a fast, simple and secure way to recover data. With it, you can protect your privacy and well being anytime and anywhere.
+                    ReWear is a fast, simple and secure way to recover data. With it, you can protect your privacy and well being anytime and anywhere.
                 </p>
 
                 <!-- Alert message -->
