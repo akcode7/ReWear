@@ -1,3 +1,6 @@
+<?php
+include 'src/config/db_connect.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -139,88 +142,42 @@
                 <h2 class="text-3xl font-bold text-gray-900">Featured Items</h2>
                 <a href="#" class="text-green-600 hover:text-green-700 font-semibold">View All →</a>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-6">
                 <!-- Product Card 1 -->
-                <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-shadow">
-                    <div class="aspect-square bg-gray-200 relative">
-                        <div class="absolute top-4 left-4">
+                 <?php
+                    $sql = "SELECT * FROM listing ORDER BY id DESC LIMIT 5";
+                    $result = $conn->query($sql);
+                    ?>
+
+                    <!-- Card Grid -->
+                    <?php while ($row = $result->fetch_assoc()): ?>
+                        <?php
+                        $images = json_decode($row['listing_img'], true);
+                        $mainImage = $images[0] ?? "https://placehold.co/400x400";
+                        ?>
+                        <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-shadow">
+                        <div class="aspect-square bg-gray-100 relative">
+                            <div class="absolute top-4 left-4">
                             <span class="bg-green-600 text-white px-2 py-1 rounded-full text-xs font-semibold">New</span>
+                            </div>
+                            <img src="<?= htmlspecialchars($mainImage) ?>" alt="Product" class="w-full h-full object-cover">
                         </div>
-                        <div class="w-full h-full flex items-center justify-center">
-                            <i class="fas fa-image text-gray-400 text-4xl"></i>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <h3 class="font-semibold text-gray-900 mb-2">Vintage Denim Jacket</h3>
-                        <p class="text-gray-600 text-sm mb-3">Size: M | Condition: Like New</p>
-                        <div class="flex justify-between items-center">
+
+                        <div class="p-4">
+                            <h3 class="font-semibold text-gray-900 mb-2"><?= htmlspecialchars($row['listing_name']) ?></h3>
+                            <p class="text-gray-600 text-sm mb-3">
+                            <?= htmlspecialchars(mb_strimwidth($row['listing_desc'], 0, 60, '...')) ?>
+                            </p>
+                            <div class="flex justify-between items-center">
                             <span class="text-green-600 font-bold">50 Points</span>
-                            <button class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors">
-                                Exchange
-                            </button>
+                            <a href="product_detail.php?product_id=<?php echo $row['id']?>" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors">
+                                View
+                            </a>
+                            </div>
                         </div>
+                        </div>
+                    <?php endwhile; ?>
                     </div>
-                </div>
-
-                <!-- Product Card 2 -->
-                <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-shadow">
-                    <div class="aspect-square bg-gray-200 relative">
-                        <div class="w-full h-full flex items-center justify-center">
-                            <i class="fas fa-image text-gray-400 text-4xl"></i>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <h3 class="font-semibold text-gray-900 mb-2">Summer Floral Dress</h3>
-                        <p class="text-gray-600 text-sm mb-3">Size: S | Condition: Excellent</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-green-600 font-bold">35 Points</span>
-                            <button class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors">
-                                Exchange
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product Card 3 -->
-                <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-shadow">
-                    <div class="aspect-square bg-gray-200 relative">
-                        <div class="w-full h-full flex items-center justify-center">
-                            <i class="fas fa-image text-gray-400 text-4xl"></i>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <h3 class="font-semibold text-gray-900 mb-2">Leather Boots</h3>
-                        <p class="text-gray-600 text-sm mb-3">Size: 8 | Condition: Good</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-green-600 font-bold">45 Points</span>
-                            <button class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors">
-                                Exchange
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product Card 4 -->
-                <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-shadow">
-                    <div class="aspect-square bg-gray-200 relative">
-                        <div class="absolute top-4 left-4">
-                            <span class="bg-orange-500 text-white px-2 py-1 rounded-full text-xs font-semibold">Hot</span>
-                        </div>
-                        <div class="w-full h-full flex items-center justify-center">
-                            <i class="fas fa-image text-gray-400 text-4xl"></i>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <h3 class="font-semibold text-gray-900 mb-2">Designer Handbag</h3>
-                        <p class="text-gray-600 text-sm mb-3">Condition: Like New</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-green-600 font-bold">80 Points</span>
-                            <button class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors">
-                                Exchange
-                            </button>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
