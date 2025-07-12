@@ -4,143 +4,345 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ReWear - Community Clothing Exchange</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#059669',
-                        secondary: '#3B82F6',
-                        accent: '#F59E0B',
-                        success: '#10B981',
-                        warning: '#F59E0B',
-                        error: '#EF4444'
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        .carousel-item {
-            min-width: 280px;
-        }
-    </style>
+    <link href="./src/css/output.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
-<body class="bg-gray-50">
-    <!-- Navigation -->
-    <nav class="bg-white shadow-lg sticky top-0 z-50">
+<body class="bg-white">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
                 <div class="flex items-center">
                     <div class="flex-shrink-0">
-                        <h1 class="text-2xl font-bold text-primary">ReWear</h1>
+                        <h1 class="text-2xl font-bold text-green-600">ReWear</h1>
                     </div>
                 </div>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#" class="text-gray-700 hover:text-primary transition-colors">Browse Items</a>
-                    <a href="#" class="text-gray-700 hover:text-primary transition-colors">How It Works</a>
-                    <a href="#" class="text-gray-700 hover:text-primary transition-colors">About</a>
-                </div>
+                
+                <!-- Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#" class="text-gray-700 hover:text-green-600 px-3 py-2 text-sm font-medium transition-colors">Home</a>
+                    <a href="#" class="text-gray-700 hover:text-green-600 px-3 py-2 text-sm font-medium transition-colors">Browse</a>
+                    <a href="#" class="text-gray-700 hover:text-green-600 px-3 py-2 text-sm font-medium transition-colors">How It Works</a>
+                    <a href="#" class="text-gray-700 hover:text-green-600 px-3 py-2 text-sm font-medium transition-colors">Community</a>
+                </nav>
+                
+                <!-- Auth Buttons -->
                 <div class="flex items-center space-x-4">
-                    <button onclick="showAuthModal('login')" class="text-gray-700 hover:text-primary transition-colors">Login</button>
-                    <button onclick="showAuthModal('signup')" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors">Sign Up</button>
+                    <a href="login.php" class="text-gray-700 hover:text-green-600 text-sm font-medium transition-colors">Login</a>
+                    <a href="signup.php" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">Sign Up</a>
                 </div>
             </div>
         </div>
-    </nav>
+    </header>
 
     <!-- Hero Section -->
-    <section class="bg-gradient-to-r from-primary to-secondary text-white py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 class="text-4xl md:text-6xl font-bold mb-6">Sustainable Fashion Exchange</h1>
-            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">Join our community to swap, trade, and discover pre-loved clothing. Reduce waste, save money, and refresh your wardrobe sustainably.</p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <button onclick="navigateTo('browse.html')" class="bg-white text-primary px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">Start Swapping</button>
-                <button onclick="navigateTo('browse.html')" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-primary transition-colors">Browse Items</button>
-                <button onclick="navigateTo('add-item.html')" class="bg-accent text-white px-8 py-3 rounded-lg font-semibold hover:bg-yellow-600 transition-colors">List an Item</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="py-16 bg-white">
+    <section class="bg-gradient-to-b from-green-50 to-white py-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">How ReWear Works</h2>
-                <p class="text-xl text-gray-600">Simple steps to sustainable fashion</p>
-            </div>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="text-center p-6">
-                    <div class="bg-primary w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span class="text-white font-bold text-2xl">1</span>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2">List Your Items</h3>
-                    <p class="text-gray-600">Upload photos and descriptions of clothing you no longer wear</p>
-                </div>
-                <div class="text-center p-6">
-                    <div class="bg-secondary w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span class="text-white font-bold text-2xl">2</span>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2">Swap or Redeem</h3>
-                    <p class="text-gray-600">Exchange items directly or use earned points to get what you want</p>
-                </div>
-                <div class="text-center p-6">
-                    <div class="bg-accent w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span class="text-white font-bold text-2xl">3</span>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2">Enjoy & Repeat</h3>
-                    <p class="text-gray-600">Get new-to-you clothes while helping the environment</p>
+            <div class="text-center">
+                <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+                    Sustainable Fashion <br>
+                    <span class="text-green-600">Starts Here</span>
+                </h1>
+                <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+                    Join our community clothing exchange platform. Swap unused garments, earn points, and contribute to a more sustainable future while refreshing your wardrobe.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="signup.php" class="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg text-lg font-semibold transition-colors">
+                        Start Exchanging
+                    </a>
+                    <a href="#how-it-works" class="border border-green-600 text-green-600 hover:bg-green-50 px-8 py-3 rounded-lg text-lg font-semibold transition-colors">
+                        Learn More
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Featured Items Carousel -->
+    <!-- Search Bar Section -->
+    <section class="py-12 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gray-50 rounded-2xl p-8">
+                <h2 class="text-2xl font-bold text-gray-900 text-center mb-6">Find Your Next Favorite Piece</h2>
+                <div class="flex flex-col md:flex-row gap-4">
+                    <div class="flex-1">
+                        <input type="text" placeholder="Search for clothing items..." 
+                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                    </div>
+                    <div class="flex-1">
+                        <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                            <option>All Categories</option>
+                            <option>Tops</option>
+                            <option>Bottoms</option>
+                            <option>Dresses</option>
+                            <option>Outerwear</option>
+                            <option>Accessories</option>
+                        </select>
+                    </div>
+                    <button class="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors">
+                        <i class="fas fa-search mr-2"></i>Search
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
     <section class="py-16 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Featured Items</h2>
-                <p class="text-xl text-gray-600">Discover amazing pieces from our community</p>
-            </div>
-            
-            <div class="relative">
-                <div class="flex overflow-x-auto space-x-6 pb-4 scrollbar-hide" id="carousel">
-                    <!-- Carousel items will be populated by JavaScript -->
+            <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">Shop by Category</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                <div class="bg-white rounded-xl p-6 text-center hover:shadow-lg transition-shadow cursor-pointer">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-tshirt text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-900">Tops</h3>
                 </div>
-                <button onclick="scrollCarousel('left')" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white shadow-lg rounded-full p-2 hover:bg-gray-50 transition-colors">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-                    </svg>
-                </button>
-                <button onclick="scrollCarousel('right')" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white shadow-lg rounded-full p-2 hover:bg-gray-50 transition-colors">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                    </svg>
-                </button>
+                <div class="bg-white rounded-xl p-6 text-center hover:shadow-lg transition-shadow cursor-pointer">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-user-tie text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-900">Formal</h3>
+                </div>
+                <div class="bg-white rounded-xl p-6 text-center hover:shadow-lg transition-shadow cursor-pointer">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-female text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-900">Dresses</h3>
+                </div>
+                <div class="bg-white rounded-xl p-6 text-center hover:shadow-lg transition-shadow cursor-pointer">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-jacket text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-900">Outerwear</h3>
+                </div>
+                <div class="bg-white rounded-xl p-6 text-center hover:shadow-lg transition-shadow cursor-pointer">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-running text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-900">Activewear</h3>
+                </div>
+                <div class="bg-white rounded-xl p-6 text-center hover:shadow-lg transition-shadow cursor-pointer">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-gem text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-900">Accessories</h3>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Stats Section -->
-    <section class="py-16 bg-primary text-white">
+    <!-- Featured Items Section -->
+    <section class="py-16 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-4 gap-8 text-center">
-                <div>
-                    <div class="text-4xl font-bold mb-2">12,500+</div>
-                    <div class="text-xl">Items Swapped</div>
+            <div class="flex justify-between items-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900">Featured Items</h2>
+                <a href="#" class="text-green-600 hover:text-green-700 font-semibold">View All →</a>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Product Card 1 -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-shadow">
+                    <div class="aspect-square bg-gray-200 relative">
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-green-600 text-white px-2 py-1 rounded-full text-xs font-semibold">New</span>
+                        </div>
+                        <div class="w-full h-full flex items-center justify-center">
+                            <i class="fas fa-image text-gray-400 text-4xl"></i>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-900 mb-2">Vintage Denim Jacket</h3>
+                        <p class="text-gray-600 text-sm mb-3">Size: M | Condition: Like New</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-green-600 font-bold">50 Points</span>
+                            <button class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors">
+                                Exchange
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <div class="text-4xl font-bold mb-2">3,200+</div>
-                    <div class="text-xl">Active Members</div>
+
+                <!-- Product Card 2 -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-shadow">
+                    <div class="aspect-square bg-gray-200 relative">
+                        <div class="w-full h-full flex items-center justify-center">
+                            <i class="fas fa-image text-gray-400 text-4xl"></i>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-900 mb-2">Summer Floral Dress</h3>
+                        <p class="text-gray-600 text-sm mb-3">Size: S | Condition: Excellent</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-green-600 font-bold">35 Points</span>
+                            <button class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors">
+                                Exchange
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <div class="text-4xl font-bold mb-2">8.5 Tons</div>
-                    <div class="text-xl">Textile Waste Saved</div>
+
+                <!-- Product Card 3 -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-shadow">
+                    <div class="aspect-square bg-gray-200 relative">
+                        <div class="w-full h-full flex items-center justify-center">
+                            <i class="fas fa-image text-gray-400 text-4xl"></i>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-900 mb-2">Leather Boots</h3>
+                        <p class="text-gray-600 text-sm mb-3">Size: 8 | Condition: Good</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-green-600 font-bold">45 Points</span>
+                            <button class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors">
+                                Exchange
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <div class="text-4xl font-bold mb-2">95%</div>
-                    <div class="text-xl">User Satisfaction</div>
+
+                <!-- Product Card 4 -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-shadow">
+                    <div class="aspect-square bg-gray-200 relative">
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-orange-500 text-white px-2 py-1 rounded-full text-xs font-semibold">Hot</span>
+                        </div>
+                        <div class="w-full h-full flex items-center justify-center">
+                            <i class="fas fa-image text-gray-400 text-4xl"></i>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-900 mb-2">Designer Handbag</h3>
+                        <p class="text-gray-600 text-sm mb-3">Condition: Like New</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-green-600 font-bold">80 Points</span>
+                            <button class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors">
+                                Exchange
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">How ReWear Works</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Simple steps to start your sustainable fashion journey
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Step 1 -->
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-white text-2xl font-bold">1</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">List Your Items</h3>
+                    <p class="text-gray-600">
+                        Upload photos of your unused clothing items and set their condition and exchange value.
+                    </p>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-white text-2xl font-bold">2</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Browse & Exchange</h3>
+                    <p class="text-gray-600">
+                        Discover items from other users and exchange using our point system or direct swaps.
+                    </p>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-white text-2xl font-bold">3</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Refresh Your Style</h3>
+                    <p class="text-gray-600">
+                        Receive your new items and enjoy a refreshed wardrobe while helping the environment.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-green-600">
+        <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-white mb-4">
+                Ready to Start Your Sustainable Fashion Journey?
+            </h2>
+            <p class="text-xl text-green-100 mb-8">
+                Join thousands of users who are already making a difference through clothing exchange.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="signup.php" class="bg-white text-green-600 hover:bg-gray-100 px-8 py-3 rounded-lg text-lg font-semibold transition-colors">
+                    Join ReWear Today
+                </a>
+                <a href="#" class="border-2 border-white text-white hover:bg-white hover:text-green-600 px-8 py-3 rounded-lg text-lg font-semibold transition-colors">
+                    Learn More
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">What Our Community Says</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-gray-50 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-white font-bold">S</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-900">Sarah Johnson</h4>
+                            <p class="text-gray-600 text-sm">Fashion Enthusiast</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">
+                        "ReWear has completely changed how I think about fashion. I've refreshed my entire wardrobe sustainably!"
+                    </p>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-gray-50 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-white font-bold">M</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-900">Mike Chen</h4>
+                            <p class="text-gray-600 text-sm">Environmental Advocate</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">
+                        "The point system is brilliant! I've earned so many points from items I never wore."
+                    </p>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-gray-50 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-white font-bold">A</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-900">Anna Rodriguez</h4>
+                            <p class="text-gray-600 text-sm">College Student</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">
+                        "As a student, ReWear helps me stay stylish on a budget while being environmentally conscious."
+                    </p>
                 </div>
             </div>
         </div>
@@ -149,83 +351,82 @@
     <!-- Footer -->
     <footer class="bg-gray-900 text-white py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-4 gap-8">
-                <div>
-                    <h3 class="text-2xl font-bold mb-4">ReWear</h3>
-                    <p class="text-gray-400">Sustainable fashion through community exchange</p>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Logo and Description -->
+                <div class="col-span-1 md:col-span-2">
+                    <h3 class="text-2xl font-bold text-green-400 mb-4">ReWear</h3>
+                    <p class="text-gray-300 mb-4">
+                        Promoting sustainable fashion through community-driven clothing exchange. 
+                        Join us in reducing textile waste and creating a more sustainable future.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-green-400 transition-colors">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-green-400 transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-green-400 transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                    </div>
                 </div>
+                
+                <!-- Quick Links -->
                 <div>
-                    <h4 class="font-semibold mb-4">Platform</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="#" class="hover:text-white transition-colors">Browse Items</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">List an Item</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">How It Works</a></li>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-green-400 transition-colors">Browse Items</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-green-400 transition-colors">How It Works</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-green-400 transition-colors">Community</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-green-400 transition-colors">Support</a></li>
                     </ul>
                 </div>
+                
+                <!-- Contact -->
                 <div>
-                    <h4 class="font-semibold mb-4">Support</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="#" class="hover:text-white transition-colors">Help Center</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Contact Us</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Community Guidelines</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-semibold mb-4">Legal</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Terms of Service</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Cookie Policy</a></li>
+                    <h4 class="font-semibold mb-4">Contact</h4>
+                    <ul class="space-y-2">
+                        <li class="text-gray-300">
+                            <i class="fas fa-envelope mr-2"></i>
+                            support@rewear.com
+                        </li>
+                        <li class="text-gray-300">
+                            <i class="fas fa-phone mr-2"></i>
+                            (555) 123-4567
+                        </li>
+                        <li class="text-gray-300">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            123 Green Street, Eco City
+                        </li>
                     </ul>
                 </div>
             </div>
-            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; 2025 ReWear. All rights reserved.</p>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p class="text-gray-400">
+                    © 2025 ReWear. All rights reserved. Building a sustainable future, one exchange at a time.
+                </p>
             </div>
         </div>
     </footer>
 
-    <!-- Authentication Modal -->
-    <div id="authModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
-        <div class="bg-white rounded-lg max-w-md w-full p-6">
-            <div class="flex justify-between items-center mb-6">
-                <h2 id="authTitle" class="text-2xl font-bold">Login</h2>
-                <button onclick="hideAuthModal()" class="text-gray-500 hover:text-gray-700">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                    </svg>
-                </button>
-            </div>
-            
-            <form id="authForm" onsubmit="handleAuth(event)">
-                <div class="space-y-4">
-                    <div id="nameField" class="hidden">
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
-                        <input type="text" id="name" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-primary focus:border-transparent">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                        <input type="email" id="email" required class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-primary focus:border-transparent">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Password</label>
-                        <input type="password" id="password" required class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-primary focus:border-transparent">
-                    </div>
-                </div>
-                
-                <button type="submit" id="authSubmit" class="w-full bg-primary text-white py-3 rounded-lg font-semibold mt-6 hover:bg-green-700 transition-colors">
-                    Login
-                </button>
-            </form>
-            
-            <div class="text-center mt-4">
-                <button onclick="toggleAuthMode()" id="authToggle" class="text-primary hover:underline">
-                    Don't have an account? Sign up
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <script src="js/main.js"></script>
+    <!-- Mobile Menu Toggle Script -->
+    <script>
+        // Simple mobile menu toggle (you can enhance this with more advanced functionality)
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add smooth scrolling for anchor links
+            const links = document.querySelectorAll('a[href^="#"]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
