@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['name'], $_POST['email
     if ($stmt->execute()) {
         $_SESSION['user_id'] = $stmt->insert_id;
         echo "Signup successful. Welcome, " . htmlspecialchars($name) . "!";
-        // Optionally redirect: header("Location: dashboard.php");
+        header("Location: dashboard.php");
     } else {
         echo "Something went wrong. Please try again.";
     }
