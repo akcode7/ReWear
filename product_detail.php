@@ -29,8 +29,8 @@ $product = $result->fetch_assoc();
       <ul class="flex space-x-6 text-sm font-medium">
         <li><a class="hover:text-gray-300" href="/">Home</a></li>
         <li><a class="hover:text-gray-300" href="#">Browse</a></li>
-        <li><a class="hover:text-gray-300" href="/login">Login</a></li>
-        <li><a class="hover:text-gray-300" href="/signup">Sign Up</a></li>
+        <li><a class="hover:text-gray-300" href="login">Login</a></li>
+        <li><a class="hover:text-gray-300" href="signup">Sign Up</a></li>
       </ul>
     </nav>
   </header>
