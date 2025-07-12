@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body class="bg-gray-50">
 
   <!-- Navbar -->
-  <header class="bg-blue-600">
+  <header class="bg-green-600">
     <nav class="text-white px-6 py-4 flex justify-between items-center container mx-auto">
       <div class="flex items-center space-x-2">
         <div class="bg-white p-2 rounded-md">
@@ -117,8 +117,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
 
             <div class="col-span-2 flex gap-3">
-              <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">Update Info</button>
-              <button type="button" onclick="openModal()" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">Add Product</button>
+              <button type="submit" class="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700">Update Info</button>
+              <button type="button" onclick="openModal()" class="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700">Add Product</button>
             </div>
           </div>
         </form>
@@ -149,7 +149,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <img src="' . htmlspecialchars($firstImg) . '" class="w-full h-32 object-cover rounded mb-4">
                 <h2 class="text-lg font-semibold mb-2">' . htmlspecialchars($row['listing_name']) . '</h2>
                 <p class="text-gray-600 mb-4">' . htmlspecialchars($row['listing_desc']) . '</p>
-                <a href="product_detail.php?product_id='. htmlspecialchars($row['id']) .'" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">View Details</a>
+                <a href="product_detail.php?product_id='. htmlspecialchars($row['id']) .'" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">View Details</a>
             </div>';
         }
         ?>
@@ -191,7 +191,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <!-- Submit Buttons -->
       <div class="flex justify-end space-x-2">
         <button type="button" onclick="closeModal()" class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300">Cancel</button>
-        <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Submit</button>
+        <button type="submit" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">Submit</button>
       </div>
     </form>
   </div>

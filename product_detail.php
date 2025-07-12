@@ -18,7 +18,7 @@ $product = $result->fetch_assoc();
 <body class="bg-gray-100">
 
   <!-- Navbar -->
-  <header class="bg-blue-600">
+  <header class="bg-green-600">
     <nav class="text-white px-6 py-4 flex justify-between items-center container mx-auto">
       <div class="flex items-center space-x-2">
         <div class="bg-white p-2 rounded-md">
@@ -53,8 +53,8 @@ $product = $result->fetch_assoc();
                 <h1 class="text-3xl font-bold mb-4"><?= htmlspecialchars($product['listing_name']) ?></h1>
                 <p class="text-gray-700 mb-6"><?= nl2br(htmlspecialchars($product['listing_desc'])) ?></p>
                 <div class="flex items-center space-x-4 mb-6">
-                    <button class="px-6 py-3 bg-blue-600 text-white rounded hover:bg-blue-700 w-fit">Start Swap</button>
-                    <button class="px-6 py-3 bg-blue-600 text-white rounded hover:bg-blue-700 w-fit">Redeem with points</button>
+                    <button class="px-6 py-3 bg-green-600 text-white rounded hover:bg-green-700 w-fit">Start Swap</button>
+                    <button class="px-6 py-3 bg-green-600 text-white rounded hover:bg-green-700 w-fit">Redeem with points</button>
 
                 </div>
 
@@ -83,7 +83,7 @@ $product = $result->fetch_assoc();
             <p class="text-sm text-gray-600"><?= htmlspecialchars(mb_strimwidth($row['listing_desc'], 0, 80, '...')) ?></p>
             <div class="mt-3 flex justify-between items-center">
 
-                <a href="product_detail.php?product_id=<?= htmlspecialchars($row['id']) ?>" class="px-6 py-3 bg-blue-600 text-white rounded hover:bg-blue-700 w-fit">View</a>
+                <a href="product_detail.php?product_id=<?= htmlspecialchars($row['id']) ?>" class="px-6 py-3 bg-green-600 text-white rounded hover:bg-green-700 w-fit">View</a>
             </div>
             </div>
         <?php endwhile; ?>
