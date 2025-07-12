@@ -1,0 +1,23 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # 1) Redirect requests with .php or .html → clean URL
+  RewriteCond %{THE_REQUEST} \s/([^.]+)\.(php|html)\s [NC]
+  RewriteRule ^ /%1 [R=301,NE,L]
+
+  # 2) Internally rewrite clean URL → .php if exists
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME}\.php -f
+  RewriteRule ^(.*)$ $1.php [L]
+
+  # 3) Internally rewrite clean URL → .html if exists
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME}\.html -f
+  RewriteRule ^(.*)$ $1.html [L]
+</IfModule>
+
+
+RewriteEngine On
+RewriteCond %{REQUEST_METHOD} POST
+RewriteRule ^src/call/send\.php$ /new-location [R=307,L]
