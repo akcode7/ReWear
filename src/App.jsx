@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import './App.css'
 import './index.css';
 import Homepage from './pages/homepage.jsx';
-import ItemListing from './pages/itemlisting.jsx';
+
 import Login from './pages/login.jsx';
 import Signup from './pages/signup.jsx';
 
@@ -12,7 +12,7 @@ function App() {
     <div className="">
       <Routes>
         <Route path="/" element={<Homepage />} />
-        <Route path="/itemListing" element={<ItemListing/>}/>
+       
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
       </Routes>
