@@ -18,7 +18,7 @@ include 'src/config/db_connect.php';
                 <!-- Logo -->
                 <div class="flex items-center">
                     <div class="flex-shrink-0">
-                        <h1 class="text-2xl font-bold text-green-600">ReWear</h1>
+                        <img src="./uploads/logo.png" class="h-12" alt="">
                     </div>
                 </div>
                 
