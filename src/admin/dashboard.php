@@ -18,7 +18,7 @@ include '../config/db_connect.php';
         <div class="bg-white p-2 rounded-md">
           <img alt="Logo" class="h-6 w-6" src="../../uploads/logo.png">
         </div>
-        <span class="text-xl font-bold">ReEear</span>
+        <span class="text-xl font-bold">ReWear</span>
       </div>
       <ul class="flex space-x-6 text-sm font-medium">
         <li><a class="hover:text-gray-300" href="/">Home</a></li>

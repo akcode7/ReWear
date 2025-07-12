@@ -18,13 +18,13 @@ $product = $result->fetch_assoc();
 <body class="bg-gray-100">
 
   <!-- Navbar -->
-  <header class="bg-green-600">
+   <header class="bg-green-600">
     <nav class="text-white px-6 py-4 flex justify-between items-center container mx-auto">
       <div class="flex items-center space-x-2">
         <div class="bg-white p-2 rounded-md">
-          <img alt="Logo" class="h-6 w-6" src="https://placehold.co/600x400">
+          <img alt="Logo" class="h-6 w-6" src="../../uploads/logo.png">
         </div>
-        <span class="text-xl font-bold">Logo</span>
+        <span class="text-xl font-bold">ReWear</span>
       </div>
       <ul class="flex space-x-6 text-sm font-medium">
         <li><a class="hover:text-gray-300" href="/">Home</a></li>
