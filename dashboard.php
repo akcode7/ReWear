@@ -1,5 +1,5 @@
 <?php
-session_start();
+include 'src/config/session.php';
 include 'src/config/db_connect.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -149,7 +149,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <img src="' . htmlspecialchars($firstImg) . '" class="w-full h-32 object-cover rounded mb-4">
                 <h2 class="text-lg font-semibold mb-2">' . htmlspecialchars($row['listing_name']) . '</h2>
                 <p class="text-gray-600 mb-4">' . htmlspecialchars($row['listing_desc']) . '</p>
-                <button class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">View Details</button>
+                <a href="product_detail.php?product_id='. htmlspecialchars($row['id']) .'" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">View Details</a>
             </div>';
         }
         ?>
