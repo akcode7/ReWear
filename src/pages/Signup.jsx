@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -15,14 +16,34 @@ const Signup = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission
-    console.log('Form submitted:', formData);
+
+    try {
+      const response = await axios.post('http://api.ashish.engineer/signup.php', formData, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+      const data = response.data;
+
+      if (data.status === 'success') {
+        console.log('Signup successful:', data);
+        localStorage.setItem('session_id', data.session_id);
+        localStorage.setItem('user', JSON.stringify(data.user));
+        alert(`Signup successful! Welcome, ${data.user.name}`);
+        // Optional: Redirect to dashboard or login
+      } else {
+        alert(data.message);
+      }
+    } catch (err) {
+      console.error('Signup error:', err);
+      alert('Network error or server error during signup');
+    }
   };
 
   const handleSocialLogin = (provider) => {
-    // Handle social login
     console.log(`${provider} login clicked`);
   };
 
@@ -31,17 +52,14 @@ const Signup = () => {
       className="min-h-screen bg-cover bg-center relative overflow-hidden"
       style={{ backgroundImage: "url('https://placehold.co/600x400')" }}
     >
-      {/* Blurred background overlay */}
       <div 
         className="absolute inset-0 bg-cover bg-center filter blur-md scale-105 z-0"
         style={{ backgroundImage: "url('https://placehold.co/600x400')" }}
       ></div>
 
-      {/* Main content */}
       <div className="relative z-10 flex items-center justify-center min-h-screen px-4">
         <div className="grid grid-cols-7 bg-white rounded-3xl shadow-2xl max-w-6xl w-full overflow-hidden">
           
-          {/* Left image side */}
           <div className="col-span-3">
             <img 
               src="https://placehold.co/350x500" 
@@ -50,7 +68,6 @@ const Signup = () => {
             />
           </div>
           
-          {/* Right login form */}
           <div className="col-span-4 p-8 md:p-10">
             <div className="flex items-center mb-8">
               <div className="h-8 w-8 rounded-md bg-gradient-to-r from-orange-400 to-red-500"></div>
@@ -62,7 +79,6 @@ const Signup = () => {
               Recova is a fast, simple and secure way to recover data. With it, you can protect your privacy and well being anytime and anywhere.
             </p>
 
-            {/* Social buttons */}
             <div className="space-y-3 mb-6">
               <button 
                 onClick={() => handleSocialLogin('Google')}
@@ -89,7 +105,6 @@ const Signup = () => {
               </button>
             </div>
 
-            {/* Divider */}
             <div className="relative my-5">
               <div className="absolute inset-0 flex items-center">
                 <div className="w-full border-t border-gray-300"></div>
@@ -100,7 +115,6 @@ const Signup = () => {
             </div>
 
             <form onSubmit={handleSubmit}>
-              {/* Form inputs */}
               <div className="mb-4 space-y-2">
                 <input 
                   type="text" 
@@ -138,10 +152,8 @@ const Signup = () => {
 
             <p className="text-sm text-gray-600 text-center mt-6">
               Already have an account? 
-              <a href="login" className="text-orange-600 hover:text-orange-500 font-medium">Sign in</a>
+              <a href="/login" className="text-orange-600 hover:text-orange-500 font-medium ml-1">Sign in</a>
             </p>
-
-           
           </div>
         </div>
       </div>
