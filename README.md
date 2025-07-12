@@ -1,6 +1,6 @@
 # ReWear – Community Clothing Exchange
 # Team Name - The Crasher
-# Team Members - Archit Saxena
+Team Members - Archit Saxena
               architsaxena349@gmail.com
               Ankit Sharma
               ankitengineer@hotmail.com
